@@ -11,8 +11,8 @@ const Computer = ({add, del}) => (
 
 const mapDispatchToProps = dispatch => {
   return {
-    add: number => dispatch({type: actionTypes.ADD, payload: number}),
-    del: number => dispatch({type: actionTypes.DELETE, payload: number}),
+    add: number => dispatch({type: actionTypes.COUNTER_ADD, payload: number}),
+    del: number => dispatch({type: actionTypes.COUNTER_SUBTRACT, payload: number}),
   }
 }
 

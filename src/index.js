@@ -12,7 +12,6 @@ const rootReducer = combineReducers({
   lst: listReducer
 })
 
-//Adding a middleware
 const logger = store => {
    return next => {
       return action => {
@@ -24,7 +23,9 @@ const logger = store => {
    }
 }
 
-const store = createStore(rootReducer, applyMiddleware(logger)); // Enhancer: apply middleware, can add more middlewares
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // Adding react dev tools as middleware
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger))); // Adding it
 
 ReactDOM.render(
   <React.StrictMode>

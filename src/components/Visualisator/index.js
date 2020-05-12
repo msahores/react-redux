@@ -21,8 +21,8 @@ const Visualisator = ({ counter, list, delItem }) => (
 
 const mapStateToProps = state => {
   return {
-    counter: state.counter,
-    list: state.list
+    counter: state.ctr.counter,
+    list: state.lst.list
   }
 }
 

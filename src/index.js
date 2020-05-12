@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './store/reducer';
+import counterReducer from './store/reducers/counter';
+import listReducer from './store/reducers/list';
 import App from './App';
 
-const store = createStore(reducer);
+const rootReducer = combineReducers({
+  ctr: counterReducer, 
+  lst: listReducer
+})
+
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>

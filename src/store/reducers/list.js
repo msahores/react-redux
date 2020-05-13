@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions';
+import * as actionTypes from '../actions/actions';
 
 const initialState = {
   list: []
@@ -14,8 +14,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.LIST_REMOVE:
       return {
         ...state, 
-        list: state.list.filter(el => el !== state.list[action.payload])
-      }
+        list: state.list.filter((el, index) => index !== action.payload)}
     default:
       return state
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions';
+import * as actionCreators from '../../store/actions/actions';
 
 const Computer = ({add, del}) => (
   <>
@@ -11,8 +11,8 @@ const Computer = ({add, del}) => (
 
 const mapDispatchToProps = dispatch => {
   return {
-    add: number => dispatch({type: actionTypes.COUNTER_ADD, payload: number}),
-    del: number => dispatch({type: actionTypes.COUNTER_SUBTRACT, payload: number}),
+    add: number => dispatch(actionCreators.counterAdd(number)),
+    del: number => dispatch(actionCreators.counterSubtract(number)),
   }
 }
 

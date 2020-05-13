@@ -23,9 +23,9 @@ const logger = store => {
    }
 }
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // Adding react dev tools as middleware
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger))); // Adding it
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
 
 ReactDOM.render(
   <React.StrictMode>

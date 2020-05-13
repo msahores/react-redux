@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions';
+import * as actionCreators from '../../store/actions/actions';
 
 const AddItemsToList = ({ addItem }) => {
   const inputRef = useRef();
@@ -13,7 +13,7 @@ const AddItemsToList = ({ addItem }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addItem: item => dispatch({type: actionTypes.LIST_ADD, payload: item})
+    addItem: item => dispatch(actionCreators.listAdd(item))
   }
 }
 

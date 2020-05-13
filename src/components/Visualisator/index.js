@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classes from './index.module.css';
-import * as actionTypes from '../../store/actions';
+import * as actionCreators  from '../../store/actions/actions';
 
 const Visualisator = ({ counter, list, delItem }) => (
   <>
@@ -28,7 +28,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    delItem: index => dispatch({type: actionTypes.LIST_REMOVE, payload: index})
+    delItem: index => dispatch(actionCreators.listRemove(index))
   }
 }
 

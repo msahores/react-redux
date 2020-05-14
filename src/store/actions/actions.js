@@ -17,10 +17,18 @@ export const counterSubtract = number => {
   }
 }
 
-export const listAdd = item => {
+export const saveResult = item => {
   return {
     type: LIST_ADD,
     payload: item
+  }
+}
+
+export const listAdd = item => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(saveResult(item))
+    }, 1000)
   }
 }
 

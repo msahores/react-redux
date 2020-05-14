@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import * as actionCreators from '../../store/actions/actions';
+import * as actionCreators from '../../store/actions/index';
 
 const AddItemsToList = ({ addItem }) => {
   const inputRef = useRef();

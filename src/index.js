@@ -13,15 +13,12 @@ const rootReducer = combineReducers({
   lst: listReducer
 })
 
-const logger = store => {
-   return next => {
-      return action => {
-        console.log('[Middleware] Dispatching', action)
-        const result = next(action);
-        console.log('[Middleware] next state', store.getState());
-        return result;
-      }
-   }
+const logger = store => next => action => {
+  console.log('[MiddleWare] Store Before Reducer', store.getState());
+  console.log('[Middleware] Dispatching following action: ', action)
+  const result = next(action);
+  console.log('[Middleware] Store After Reducer: ', store.getState());
+  return result;
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

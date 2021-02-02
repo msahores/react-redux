@@ -6,7 +6,9 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import counterReducer from './store/reducers/counter';
 import listReducer from './store/reducers/list';
+import { loadState, saveState } from './localStorage';
 import App from './App';
+import throttle from 'lodash/throttle';
 
 const rootReducer = combineReducers({
   ctr: counterReducer, 
@@ -23,7 +25,19 @@ const logger = store => next => action => {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
+const persistedData = loadState();
+
+//todo: fetch some data using thunks
+const store = createStore(rootReducer, persistedData, composeEnhancers(applyMiddleware(logger, thunk)));
+
+store.subscribe(throttle(()=> {
+  // saveState(store.getState()) // to save the sull store
+
+  //to save some specifics:
+  saveState({
+    lst: store.getState().lst
+  })
+}, 1000));
 
 ReactDOM.render(
   <React.StrictMode>
